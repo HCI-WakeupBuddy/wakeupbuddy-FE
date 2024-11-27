@@ -151,7 +151,6 @@ body {
   width: 100%;
   max-width: 440px; /* 모바일에서는 440px 이상 확장되지 않도록 설정 */
   margin: 0 auto;
-  background-color: blue;
 }
 
 /* 데스크톱 화면에서는 고정 440px */
