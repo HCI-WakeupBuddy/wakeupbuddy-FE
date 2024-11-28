@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import TitleText from "../components/common/TitleText";
 import styled from "styled-components";
 import Lottie from "lottie-react";
@@ -6,6 +7,7 @@ import Graph from "../animations/graph.json";
 import Button from "../components/common/Button";
 
 const DetectingPage = () => {
+  const navigate = useNavigate();
   const username = localStorage.getItem("username");
   localStorage.setItem("studyTime", 1);
 
@@ -23,6 +25,7 @@ const DetectingPage = () => {
             return 59;
           } else {
             clearInterval(timer);
+            navigate("/writing");
             return 0;
           }
         }
