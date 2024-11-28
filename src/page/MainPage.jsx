@@ -40,6 +40,7 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
 const MainWrapper = styled.div`
   padding: 102px 38px 196px 38px;
   /* background-color: #ebebeb; */
