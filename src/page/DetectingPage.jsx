@@ -57,7 +57,7 @@ const DetectingPage = () => {
             <span>min</span> <span>sec</span>
           </TimeLabel>
         </TimerBox>
-        <Button backgroundColor={"#E9E9EB"} txt={"학습 종료"} />
+        <Button $backgroundColor={"#E9E9EB"} txt={"학습 종료"} />
       </Wrapper>
     </div>
   );

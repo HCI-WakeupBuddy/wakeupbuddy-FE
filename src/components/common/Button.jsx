@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const Button = ({ txt, onBtnClick, type, backgroundColor }) => {
+const Button = ({ txt, onBtnClick, type, $backgroundColor }) => {
   return (
     <div>
       <ButtonBox
         onClick={onBtnClick}
         type={type}
-        backgroundColor={backgroundColor}
+        $backgroundColor={$backgroundColor}
       >
         {txt || "버튼"}
       </ButtonBox>
@@ -18,7 +18,7 @@ export default Button;
 
 const ButtonBox = styled.button`
   font-family: "pretendard";
-  background-color: ${(props) => props.backgroundColor || "#EADDFF"};
+  background-color: ${(props) => props.$backgroundColor || "#EADDFF"};
   width: 300px;
   height: 50px;
   border-radius: 15px;
