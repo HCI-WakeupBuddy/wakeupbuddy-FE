@@ -1,7 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 
 const WritingReport = () => {
-  return <div>학습리포트 작성 중</div>;
+  return (
+    <div>
+      <Wrapper>
+        <TitleText txt={"WakeupBuddy"} />
+      </Wrapper>
+    </div>
+  );
 };
 
 export default WritingReport;
+
+const Wrapper = styled.div`
+  padding: 102px 38px 196px 38px;
+  /* background-color: #ebebeb; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
