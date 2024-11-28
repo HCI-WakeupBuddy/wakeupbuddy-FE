@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../assets/img/logo.svg";
 import TitleText from "../components/TitleText";
 import Button from "../components/Button";
 
 const MainPage = () => {
+  const [username, setUsername] = useState("");
+
+  const onChange = (e) => {
+    setUsername(e.target.value);
+  };
+  const handleUsername = () => {
+    localStorage.clear();
+    localStorage.setItem("username", username);
+  };
   return (
     <div>
       <MainWrapper>
@@ -19,11 +28,12 @@ const MainPage = () => {
           </SubText>
         </TextBox>
         <Input
-          // value={username}
+          onChange={onChange}
+          value={username}
           name={"username"}
           placeholder="이름을 입력해주세요"
         />
-        <Button txt={"시작"} />
+        <Button txt={"시작"} onBtnClick={handleUsername} />
       </MainWrapper>
     </div>
   );
