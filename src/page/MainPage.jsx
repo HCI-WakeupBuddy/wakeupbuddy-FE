@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../assets/img/logo.svg";
-import TitleText from "../components/TitleText";
-import Button from "../components/Button";
+import TitleText from "../components/common/TitleText";
+import Button from "../components/common/Button";
 
 const MainPage = () => {
   const [username, setUsername] = useState("");

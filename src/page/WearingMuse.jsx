@@ -1,5 +1,5 @@
 import React from "react";
-import TitleText from "../components/TitleText";
+import TitleText from "../components/common/TitleText";
 import styled from "styled-components";
 
 const WearingMuse = () => {
