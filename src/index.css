@@ -149,13 +149,13 @@ body {
 
 #root {
   width: 100%;
-  max-width: 440px; /* 모바일에서는 440px 이상 확장되지 않도록 설정 */
+  max-width: 375px; /* 모바일에서는 375px 이상 확장되지 않도록 설정 */
   margin: 0 auto;
 }
 
-/* 데스크톱 화면에서는 고정 440px */
-@media (min-width: 440px) {
+/* 데스크톱 화면에서는 고정 375px */
+@media (min-width: 375px) {
   #root {
-    width: 440px;
+    width: 375px;
   }
 }
