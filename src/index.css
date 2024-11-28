@@ -91,6 +91,7 @@ video {
   vertical-align: baseline;
 }
 body {
+  background-color: #e4ccff66;
   margin: 0 auto;
   padding: 0;
   border: 0;
@@ -143,9 +144,9 @@ table {
   border-spacing: 0;
 }
 
-body {
+/* body {
   padding: 1em;
-}
+} */
 
 #root {
   width: 100%;

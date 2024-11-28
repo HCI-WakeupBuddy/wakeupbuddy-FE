@@ -24,7 +24,7 @@ const MainPage = () => {
           <SubText>
             뇌파 측정을 원하시면 이름을 입력하고
             <br />
-            <span>시간 버튼</span>을 눌러주세요.
+            <span>시작 버튼</span>을 눌러주세요.
           </SubText>
         </TextBox>
         <Input
@@ -43,7 +43,8 @@ export default MainPage;
 
 const MainWrapper = styled.div`
   padding: 102px 38px 196px 38px;
-  /* background-color: #ebebeb; */
+  height: calc(100vh - 298px);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
