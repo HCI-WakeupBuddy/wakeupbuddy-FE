@@ -33,7 +33,7 @@ const SettingTime = () => {
           min="1" // 최소값 설정
           // max="999" 최대값 설정
           step="1" // 스크롤 조작 시 1씩 증가
-          isChange={isChange} // Styled Components로 상태 전달
+          $isChange={isChange} // Styled Components로 상태 전달
         />
         <MinText>min</MinText>
       </Content>
@@ -52,11 +52,6 @@ const Box = styled.div`
 `;
 
 const Title = styled.div`
-  /* display: flex;
-  padding: 20px 24px 0;
-  align-items: flex-start;
-  gap: 10px;
-  align-self: stretch; */
   color: #49454f;
   font-size: 14px;
   font-style: normal;
@@ -93,7 +88,7 @@ const InputTime = styled.input`
   border-radius: 8px;
   border: 2px solid #6750a4;
   background-color: ${(props) =>
-    props.isChange ? "#E8DEF8" : "#E9E9EB"}; /* isChange에 따라 배경색 변경 */
+    props.$isChange ? "#E8DEF8" : "#E9E9EB"}; /* isChange에 따라 배경색 변경 */
   text-align: center;
   text-align: center;
   color: #6750a4;
@@ -103,11 +98,6 @@ const InputTime = styled.input`
   font-weight: 400;
   line-height: 52px;
   outline: none;
-
-  /* 비활성화 상태일 때 스타일 추가 */
-  &:invalid {
-    border-color: red;
-  }
 `;
 
 const MinText = styled.span`
@@ -121,16 +111,6 @@ const MinText = styled.span`
   letter-spacing: 0.4px;
 `;
 
-const Buttons = styled.div`
-  position: absolute;
-  left: 190px;
-  bottom: 10px;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-`;
 const ResetBtn = styled.div`
   background-color: #e9e9eb;
   border: none;
