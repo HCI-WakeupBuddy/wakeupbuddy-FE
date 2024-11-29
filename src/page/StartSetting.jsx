@@ -18,12 +18,11 @@ const StartSetting = () => {
         intensity: localStorage.getItem("intensity"),
       });
       console.log(response);
+      alert(`${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
+      navigate("/detecting");
     } catch (error) {
       console.error("error:", error);
     }
-
-    alert(`${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
-    navigate("/detecting");
   };
 
   useEffect(() => {

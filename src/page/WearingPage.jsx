@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
@@ -9,26 +9,55 @@ import apiCall from "../api/Api";
 
 const WearingPage = () => {
   const [museStatus, setMuseStatus] = useState(false);
-  const username = localStorage.getItem("username");
-
+  const [wearingMessage, setWearingMessage] = useState(
+    "WakeupBuddy를 착용해주세요."
+  );
   const navigate = useNavigate();
+  const username = localStorage.getItem("username");
+  const isNavigating = useRef(false); // 중복 navigate 방지
+
+  let time = 1;
 
   useEffect(() => {
-    const fetchMuseStatus = async () => {
+    const intervalId = setInterval(async () => {
+      if (isNavigating.current) {
+        clearInterval(intervalId); // navigate 중이면 interval 중지
+        return;
+      }
+
       try {
-        const response = await apiCall("/api/muse/muse-status", "GET");
+        const requestBody = { username };
+        const response = await apiCall(
+          "/api/muse/muse-status",
+          "POST",
+          requestBody
+        );
+        console.log(response.data.status);
         setMuseStatus(response.data.status);
 
-        if (museStatus === true) {
-          navigate("/setting");
+        if (response.data.status === true) {
+          clearInterval(intervalId); // interval 중지
+          isNavigating.current = true; // navigate 상태 설정
+          setTimeout(() => {
+            navigate("/setting");
+          }, 3000); // 3초 대기 후 페이지 이동
+        } else {
+          time += 1;
+          if (time > 5) {
+            setWearingMessage(
+              "WakeupBuddy를 올바르게 착용했는지 확인해주세요."
+            );
+          }
         }
       } catch (error) {
         console.error("error", error);
       }
-    };
+    }, 2000); // 2초마다 요청
 
-    fetchMuseStatus();
-  }, [navigate]);
+    return () => {
+      clearInterval(intervalId); // 컴포넌트 언마운트 시 interval 정리
+    };
+  }, [username, navigate]);
 
   return (
     <div>
@@ -55,7 +84,7 @@ const WearingPage = () => {
             <SubText>
               <span>{username}님,</span>
               <br />
-              WakeupBuddy를 착용해주세요.
+              {wearingMessage}
             </SubText>
             <LoadingBox>
               <BeatLoader color="#6750A4" />
