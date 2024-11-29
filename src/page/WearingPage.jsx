@@ -5,6 +5,8 @@ import { BeatLoader } from "react-spinners";
 import TitleText from "../components/common/TitleText";
 import Lottie from "lottie-react";
 import Check from "../assets/animations/checkmark.json";
+import axios from "axios";
+import apiCall from "../api/Api";
 
 const WearingPage = () => {
   const [museStatus, setMuseStatus] = useState(false);
@@ -13,14 +15,20 @@ const WearingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMuseStatus(true);
-      setTimeout(() => {
-        navigate("/setting");
-      }, 3000);
-    }, 3000);
+    const fetchMuseStatus = async () => {
+      try {
+        const response = await apiCall("/api/muse/muse-status", "GET");
+        setMuseStatus(response.data.state);
 
-    return () => clearTimeout(timer);
+        if (museStatus === true) {
+          navigate("/setting");
+        }
+      } catch (error) {
+        console.error("error", error);
+      }
+    };
+
+    fetchMuseStatus();
   }, [navigate]);
 
   return (
