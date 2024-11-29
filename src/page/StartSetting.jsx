@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import TitleText from "../components/common/TitleText";
 import Button from "../components/common/Button";
@@ -8,16 +8,17 @@ import { useNavigate } from "react-router-dom";
 
 const StartSetting = () => {
   const username = localStorage.getItem("username");
-  const vibration = localStorage.getItem("vibrationLevel");
-  const studyTime = localStorage.getItem("studyTime");
   const navigate = useNavigate();
 
   const handleStudyStart = () => {
+    alert(`${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
     navigate("/detecting");
-    alert(`🕖 학습 시간: ${studyTime}분 | 💤 진동 세기: ${vibration}
-
-${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
   };
+
+  useEffect(() => {
+    localStorage.setItem("studyTime", 30);
+    localStorage.setItem("vibrationLevel", "level1");
+  }, []);
 
   return (
     <div>

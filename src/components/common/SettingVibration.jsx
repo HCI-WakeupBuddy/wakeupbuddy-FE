@@ -2,44 +2,51 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SettingVibration = () => {
-  const [vibrationLevel, setVibrationLevel] = useState("약"); // 진동 세기 상태
+  const [vibrationLevel, setVibrationLevel] = useState("level1"); // 진동 세기 상태
 
-  const handleVibration = () => {
-    localStorage.setItem("vibrationLevel", vibrationLevel);
+  const handleVibration = (e) => {
+    let levelId = e ? e.target.id : "";
+    setVibrationLevel(levelId);
+    localStorage.setItem("vibrationLevel", levelId);
+    console.log(levelId);
   };
 
-  const handleCancel = () => {
-    setVibrationLevel("약");
+  const handleCancel = (e) => {
+    let levelId = "level1";
+    setVibrationLevel(levelId);
+    localStorage.setItem("vibrationLevel", levelId);
+    console.log(levelId);
   };
 
   return (
     <Box>
-      <Title>진동 세기를 선택해 주세요.</Title>
+      <TitleBox>
+        <Title>진동 세기를 선택해 주세요.</Title>
+        <ResetBtn onClick={handleCancel}>초기화</ResetBtn>
+      </TitleBox>
       <Content>
         <Level1Btn
-          onClick={() => setVibrationLevel("약")}
-          isSelected={vibrationLevel === "약"}
+          id={"level1"}
+          onClick={handleVibration}
+          isSelected={vibrationLevel === "level1"}
         >
           약
         </Level1Btn>
         <Level2Btn
-          onClick={() => setVibrationLevel("중")}
-          isSelected={vibrationLevel === "중"}
+          id={"level2"}
+          onClick={handleVibration}
+          isSelected={vibrationLevel === "level2"}
         >
           중
         </Level2Btn>
         <Level3Btn
-          onClick={() => setVibrationLevel("강")}
-          isSelected={vibrationLevel === "강"}
+          id={"level3"}
+          onClick={handleVibration}
+          isSelected={vibrationLevel === "level3"}
         >
           강
         </Level3Btn>
       </Content>
-
-      <Buttons>
-        <Btn onClick={handleCancel}>취소</Btn>
-        <Btn onClick={handleVibration}>확인</Btn>
-      </Buttons>
     </Box>
   );
 };
@@ -48,24 +55,14 @@ export default SettingVibration;
 
 // 스타일 컴포넌트
 const Box = styled.div`
-  display: flex;
-  position: relative;
   width: 300px;
-  height: 220px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
+  height: 180px;
   flex-shrink: 0;
   border-radius: 28px;
   background: #e9e9eb;
 `;
 
 const Title = styled.div`
-  display: flex;
-  padding: 20px 24px 0;
-  align-items: flex-start;
-  gap: 10px;
-  align-self: stretch;
   color: #49454f;
   font-size: 14px;
   font-weight: 500;
@@ -73,9 +70,17 @@ const Title = styled.div`
   letter-spacing: 0.5px;
 `;
 
+const TitleBox = styled.div`
+  padding: 20px 24px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const Content = styled.div`
   display: flex;
-  margin: 30px auto 0;
+  margin: 50px auto 0;
   align-items: center;
   flex-shrink: 0;
   align-self: stretch;
@@ -128,32 +133,11 @@ const Level3Btn = styled.button`
   z-index: ${(props) => (props.isSelected ? "100" : "0")};
 `;
 
-const Buttons = styled.div`
-  position: absolute;
-  left: 190px;
-  bottom: 10px;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  /* gap: 8px; */
-`;
-
-const Btn = styled.button`
-  display: flex;
-  height: 40px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+const ResetBtn = styled.div`
   background-color: #e9e9eb;
   border: none;
   color: #6750a4;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-
-  &:hover {
-    background-color: #d3d3e1;
-  }
 `;

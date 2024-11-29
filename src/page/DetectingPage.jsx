@@ -10,6 +10,8 @@ const DetectingPage = () => {
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
   const initialMinutes = parseInt(localStorage.getItem("studyTime"), 10) || 0;
+  // localStorage.setItem("initialMinutes", 70);
+  // const initialMinutes = localStorage.getItem("initialMinutes");
 
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(0);
