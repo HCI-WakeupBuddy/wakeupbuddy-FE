@@ -17,7 +17,6 @@ const Button = ({ txt, onBtnClick, type, $backgroundColor }) => {
 export default Button;
 
 const ButtonBox = styled.button`
-  font-family: "pretendard";
   background-color: ${(props) => props.$backgroundColor || "#EADDFF"};
   width: 300px;
   height: 50px;

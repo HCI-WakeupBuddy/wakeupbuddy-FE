@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SettingTime = () => {
-  const [studyTime, setStudyTime] = useState(30); // 학습 시간 상태
+  const [duration, setDuration] = useState(30); // 학습 시간 상태
   const [isChange, setIsChange] = useState(false); // 배경색 변경 여부 상태
 
   const handleCancel = () => {
     let baseTime = 30;
-    setStudyTime(baseTime);
-    localStorage.setItem("studyTime", baseTime);
+    setDuration(baseTime);
+    localStorage.setItem("duration", baseTime);
     setIsChange(false); // 변경 상태 초기화
   };
 
   const handleTimeChange = (e) => {
-    setStudyTime(e.target.value);
-    setIsChange(true); // 값 변경 시 isChange를 true로 설정
-    const value = parseInt(e.target.value, 10);
-    localStorage.setItem("studyTime", value);
+    const inputValue = e.target.value;
+    if (isNaN(inputValue)) {
+      return;
+    }
+    const value = parseInt(inputValue, 10);
+    setDuration(value);
+    setIsChange(true);
+    localStorage.setItem("duration", value);
   };
 
   return (
@@ -28,7 +32,7 @@ const SettingTime = () => {
       <Content>
         <InputTime
           type="number"
-          value={studyTime}
+          value={duration}
           onChange={handleTimeChange}
           min="1" // 최소값 설정
           // max="999" 최대값 설정
@@ -37,6 +41,7 @@ const SettingTime = () => {
         />
         <MinText>min</MinText>
       </Content>
+      <ErrorMessage>* 숫자만 입력해주세요.</ErrorMessage>
     </Box>
   );
 };
@@ -92,7 +97,6 @@ const InputTime = styled.input`
   text-align: center;
   text-align: center;
   color: #6750a4;
-  font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -103,7 +107,6 @@ const InputTime = styled.input`
 const MinText = styled.span`
   margin-left: 13px;
   color: #6750a4;
-  font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -118,4 +121,16 @@ const ResetBtn = styled.div`
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+`;
+
+const ErrorMessage = styled.div`
+  text-align: left;
+  margin: 0;
+  margin-top: 7px;
+  margin-left: 65px;
+  color: #e15cd8;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 18px */
 `;

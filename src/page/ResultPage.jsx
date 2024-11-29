@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TitleText from "../components/common/TitleText";
 import ResultBox from "../components/result/ResultBox";
-import SampleImg from "../assets/img/sample-graph.png";
+// import SampleImg from "../assets/img/sample-graph.png";
+import apiCall from "../api/Api";
 
-const MOCKRESULT = [
-  { id: 1, graph: SampleImg, total: 3, drowsiness: 10, vibe: 5, study: 4 },
-];
+// const MOCKRESULT = [
+//   { id: 1, graph: SampleImg, total: 3, drowsiness: 10, vibe: 5, study: 4 },
+// ];
 
 const ResultPage = () => {
   const username = localStorage.getItem("username");
-  const [resultInfo, setResultInfo] = useState(MOCKRESULT);
+  const [resultInfo, setResultInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchResult = async () => {
+      try {
+        const response = await apiCall("/api/eeg/session-result", "GET");
+        setResultInfo(response.data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchResult();
+  }, []);
+
   return (
     <div>
       {resultInfo.map((result) => (
@@ -18,13 +32,13 @@ const ResultPage = () => {
           <TitleText txt={"통계 결과"} />
           <SubText>{username}님의 학습 리포트입니다.</SubText>
           <GraphBox>
-            <Graph src={result.graph} />
+            <Graph src={result.graphImageUrl} />
           </GraphBox>
           <ResultBox
-            total={result.total}
-            drowsiness={result.drowsiness}
-            vibe={result.vibe}
-            study={result.study}
+            total={result.totalTime}
+            drowsiness={result.totalDrowsyTime}
+            vibe={result.totalVibrationCount}
+            study={result.totalAwakeTime}
           />
         </Wrapper>
       ))}

@@ -70,7 +70,6 @@ const TextBox = styled.div`
 const Welcome = styled.div`
   color: #000;
   text-align: center;
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -80,7 +79,6 @@ const Welcome = styled.div`
 const SubText = styled.div`
   color: #000;
   text-align: center;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

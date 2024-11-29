@@ -25,7 +25,6 @@ const Wrapper = styled.div`
   border-radius: 28px;
   background: #f0e6ff;
   color: #000;
-  font-family: "Pretendard";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
