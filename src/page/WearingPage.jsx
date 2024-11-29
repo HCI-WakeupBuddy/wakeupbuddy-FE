@@ -83,7 +83,6 @@ const SubText = styled.div`
   text-align: center;
   margin-top: 138px;
   color: #000;
-  font-family: "Pretendard";
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

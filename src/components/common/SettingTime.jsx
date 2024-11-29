@@ -92,7 +92,6 @@ const InputTime = styled.input`
   text-align: center;
   text-align: center;
   color: #6750a4;
-  font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -103,7 +102,6 @@ const InputTime = styled.input`
 const MinText = styled.span`
   margin-left: 13px;
   color: #6750a4;
-  font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
