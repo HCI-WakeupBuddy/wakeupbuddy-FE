@@ -67,7 +67,7 @@ const Box = styled.div`
   display: flex;
   position: relative;
   width: 300px;
-  height: 220px;
+  height: 200px;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
