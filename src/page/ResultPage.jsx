@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TitleText from "../components/common/TitleText";
 import ResultBox from "../components/result/ResultBox";
@@ -11,6 +11,7 @@ const MOCKRESULT = [
 const ResultPage = () => {
   const username = localStorage.getItem("username");
   const [resultInfo, setResultInfo] = useState(MOCKRESULT);
+
   return (
     <div>
       {resultInfo.map((result) => (

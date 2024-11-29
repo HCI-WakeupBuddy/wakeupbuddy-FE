@@ -13,7 +13,7 @@ const StartSetting = () => {
 
   const handleStudyStart = async () => {
     try {
-      const response = await apiCall("users/profile/update/", "POST", {
+      const response = await apiCall("/api/eeg/start-session", "POST", {
         duration: localStorage.getItem("duration"),
         intensity: localStorage.getItem("intensity"),
       });
