@@ -91,7 +91,7 @@ video {
   vertical-align: baseline;
 }
 body {
-  background-color: #e4ccff66;
+  background: linear-gradient(299deg, #eaddff 30.84%, #fdfbff 85.83%);
   margin: 0 auto;
   padding: 0;
   border: 0;

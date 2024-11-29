@@ -7,14 +7,14 @@ import Lottie from "lottie-react";
 import Check from "../assets/animations/checkmark.json";
 
 const WearingPage = () => {
-  const [state, setState] = useState(false);
+  const [museStatus, setMuseStatus] = useState(false);
   const username = localStorage.getItem("username");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setState(true);
+      setMuseStatus(true);
       setTimeout(() => {
         navigate("/setting");
       }, 3000);
@@ -27,7 +27,7 @@ const WearingPage = () => {
     <div>
       <Wrapper>
         <TitleText txt={"WakeupBuddy"} />
-        {state ? (
+        {museStatus ? (
           <div>
             <SubText>
               <span>{username}님,</span>
