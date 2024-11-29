@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   { path: "/", element: <MainPage /> },
   { path: "/wearing", element: <WearingMuse /> },
   { path: "/complete", element: <CompleteMuse /> },
-  { path: "/start", element: <StartSetting /> },
+  { path: "/setting", element: <StartSetting /> },
   { path: "/detecting", element: <DetectingPage /> },
   { path: "/writing", element: <WritingReport /> },
   { path: "/result", element: <ResultPage /> },
