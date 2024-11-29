@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SettingTime = () => {
-  const [studyTime, setStudyTime] = useState(30); // 학습 시간 상태
+  const [duration, setDuration] = useState(30); // 학습 시간 상태
   const [isChange, setIsChange] = useState(false); // 배경색 변경 여부 상태
 
   const handleCancel = () => {
     let baseTime = 30;
-    setStudyTime(baseTime);
-    localStorage.setItem("studyTime", baseTime);
+    setDuration(baseTime);
+    localStorage.setItem("duration", baseTime);
     setIsChange(false); // 변경 상태 초기화
   };
 
   const handleTimeChange = (e) => {
-    setStudyTime(e.target.value);
+    setDuration(e.target.value);
     setIsChange(true); // 값 변경 시 isChange를 true로 설정
     const value = parseInt(e.target.value, 10);
-    localStorage.setItem("studyTime", value);
+    localStorage.setItem("duration", value);
   };
 
   return (
@@ -28,7 +28,7 @@ const SettingTime = () => {
       <Content>
         <InputTime
           type="number"
-          value={studyTime}
+          value={duration}
           onChange={handleTimeChange}
           min="1" // 최소값 설정
           // max="999" 최대값 설정

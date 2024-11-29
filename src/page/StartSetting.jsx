@@ -5,19 +5,30 @@ import Button from "../components/common/Button";
 import SettingTime from "../components/common/SettingTime";
 import SettingVibration from "../components/common/SettingVibration";
 import { useNavigate } from "react-router-dom";
+import apiCall from "../api/Api";
 
 const StartSetting = () => {
   const username = localStorage.getItem("username");
   const navigate = useNavigate();
 
-  const handleStudyStart = () => {
+  const handleStudyStart = async () => {
+    try {
+      const response = await apiCall("users/profile/update/", "POST", {
+        duration: localStorage.getItem("duration"),
+        intensity: localStorage.getItem("intensity"),
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("error:", error);
+    }
+
     alert(`${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
     navigate("/detecting");
   };
 
   useEffect(() => {
-    localStorage.setItem("studyTime", 30);
-    localStorage.setItem("vibrationLevel", "level1");
+    localStorage.setItem("duration", 30);
+    localStorage.setItem("intensity", "level1");
   }, []);
 
   return (

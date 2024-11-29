@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SettingVibration = () => {
-  const [vibrationLevel, setVibrationLevel] = useState("level1"); // 진동 세기 상태
+  const [intensity, setIntensity] = useState("level1"); // 진동 세기 상태
 
   const handleVibration = (e) => {
     let levelId = e ? e.target.id : "";
-    setVibrationLevel(levelId);
-    localStorage.setItem("vibrationLevel", levelId);
+    setIntensity(levelId);
+    localStorage.setItem("intensity", levelId);
   };
 
   const handleCancel = (e) => {
     let levelId = "level1";
-    setVibrationLevel(levelId);
-    localStorage.setItem("vibrationLevel", levelId);
+    setIntensity(levelId);
+    localStorage.setItem("intensity", levelId);
   };
 
   return (
@@ -26,21 +26,21 @@ const SettingVibration = () => {
         <Level1Btn
           id={"level1"}
           onClick={handleVibration}
-          $isSelected={vibrationLevel === "level1"}
+          $isSelected={intensity === "level1"}
         >
           약
         </Level1Btn>
         <Level2Btn
           id={"level2"}
           onClick={handleVibration}
-          $isSelected={vibrationLevel === "level2"}
+          $isSelected={intensity === "level2"}
         >
           중
         </Level2Btn>
         <Level3Btn
           id={"level3"}
           onClick={handleVibration}
-          $isSelected={vibrationLevel === "level3"}
+          $isSelected={intensity === "level3"}
         >
           강
         </Level3Btn>
