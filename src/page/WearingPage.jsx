@@ -9,26 +9,13 @@ import apiCall from "../api/Api";
 
 const WearingPage = () => {
   const [museStatus, setMuseStatus] = useState(false);
-  const username = localStorage.getItem("username");
-
+  const [wearingMessage, setWeringMessage] = useState(
+    "WakeupBuddy를 착용해주세요."
+  );
   const navigate = useNavigate();
 
-  // const handleUsername = async () => {
-  //   try {
-  //     const requestBody = { username };
-  //     const response = await apiCall(
-  //       "/api/muse/muse-status",
-  //       "POST",
-  //       requestBody
-  //     );
-  //     console.log(response);
-  //     localStorage.clear();
-  //     localStorage.setItem("username", username);
-  //     navigate("/wearing");
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
+  const username = localStorage.getItem("username");
+  let time = 1;
 
   useEffect(() => {
     const intervalId = setInterval(async () => {
@@ -47,6 +34,11 @@ const WearingPage = () => {
           setTimeout(() => {
             navigate("/setting");
           }, 3000); // 3초 대기
+        } else {
+          time = time + 1;
+          if (time > 5) {
+            setWeringMessage("WakeupBuddy를 올바르게 착용했는지 확인해주세요.");
+          }
         }
       } catch (error) {
         console.error("error", error);
@@ -83,7 +75,7 @@ const WearingPage = () => {
             <SubText>
               <span>{username}님,</span>
               <br />
-              WakeupBuddy를 착용해주세요.
+              {wearingMessage}
             </SubText>
             <LoadingBox>
               <BeatLoader color="#6750A4" />
