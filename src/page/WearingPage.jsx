@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import TitleText from "../components/common/TitleText";
 import Lottie from "lottie-react";
-import Check from "../animations/checkmark.json";
+import Check from "../assets/animations/checkmark.json";
 
 const WearingPage = () => {
   const [museStatus, setMuseStatus] = useState(false);

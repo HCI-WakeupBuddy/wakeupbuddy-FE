@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TitleText from "../components/common/TitleText";
 import styled from "styled-components";
 import Lottie from "lottie-react";
-import Graph from "../animations/graph.json";
+import Graph from "../assets/animations/graph.json";
 import Button from "../components/common/Button";
 
 const DetectingPage = () => {
