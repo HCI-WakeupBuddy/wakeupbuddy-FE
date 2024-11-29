@@ -39,7 +39,7 @@ const DetectingPage = () => {
   return (
     <div>
       <Wrapper>
-        <TitleText txt={"측정 중"} />
+        <TitleText txt={"학습 중"} />
         <SubText>
           <span>{username}님</span>의 뇌파를 측정 중입니다.
         </SubText>
