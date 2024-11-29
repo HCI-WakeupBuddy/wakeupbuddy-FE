@@ -8,14 +8,12 @@ const SettingVibration = () => {
     let levelId = e ? e.target.id : "";
     setVibrationLevel(levelId);
     localStorage.setItem("vibrationLevel", levelId);
-    console.log(levelId);
   };
 
   const handleCancel = (e) => {
     let levelId = "level1";
     setVibrationLevel(levelId);
     localStorage.setItem("vibrationLevel", levelId);
-    console.log(levelId);
   };
 
   return (
@@ -28,21 +26,21 @@ const SettingVibration = () => {
         <Level1Btn
           id={"level1"}
           onClick={handleVibration}
-          isSelected={vibrationLevel === "level1"}
+          $isSelected={vibrationLevel === "level1"}
         >
           약
         </Level1Btn>
         <Level2Btn
           id={"level2"}
           onClick={handleVibration}
-          isSelected={vibrationLevel === "level2"}
+          $isSelected={vibrationLevel === "level2"}
         >
           중
         </Level2Btn>
         <Level3Btn
           id={"level3"}
           onClick={handleVibration}
-          isSelected={vibrationLevel === "level3"}
+          $isSelected={vibrationLevel === "level3"}
         >
           강
         </Level3Btn>
@@ -94,13 +92,13 @@ const Level1Btn = styled.button`
   margin-right: -3px;
   border-radius: 100px 0px 0px 100px;
   border: ${(props) =>
-    props.isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
-  background-color: ${(props) => (props.isSelected ? "#E8DEF8" : "#fff")};
-  color: ${(props) => (props.isSelected ? "#6750A4" : "#49454f")};
+    props.$isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
+  background-color: ${(props) => (props.$isSelected ? "#E8DEF8" : "#fff")};
+  color: ${(props) => (props.$isSelected ? "#6750A4" : "#49454f")};
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  z-index: ${(props) => (props.isSelected ? "100" : "0")};
+  z-index: ${(props) => (props.$isSelected ? "100" : "0")};
 `;
 
 // 중 버튼
@@ -108,13 +106,13 @@ const Level2Btn = styled.button`
   width: 78px;
   height: 40px;
   border: ${(props) =>
-    props.isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
-  background-color: ${(props) => (props.isSelected ? "#E8DEF8" : "#fff")};
-  color: ${(props) => (props.isSelected ? "#6750A4" : "#49454f")};
+    props.$isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
+  background-color: ${(props) => (props.$isSelected ? "#E8DEF8" : "#fff")};
+  color: ${(props) => (props.$isSelected ? "#6750A4" : "#49454f")};
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  z-index: ${(props) => (props.isSelected ? "100" : "0")};
+  z-index: ${(props) => (props.$isSelected ? "100" : "0")};
 `;
 
 // 강 버튼
@@ -124,13 +122,13 @@ const Level3Btn = styled.button`
   margin-left: -3px;
   border-radius: 0px 100px 100px 0px;
   border: ${(props) =>
-    props.isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
-  background-color: ${(props) => (props.isSelected ? "#E8DEF8" : "#fff")};
-  color: ${(props) => (props.isSelected ? "#6750A4" : "#49454f")};
+    props.$isSelected ? "2px solid #6750A4" : "1px solid #ccc"};
+  background-color: ${(props) => (props.$isSelected ? "#E8DEF8" : "#fff")};
+  color: ${(props) => (props.$isSelected ? "#6750A4" : "#49454f")};
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  z-index: ${(props) => (props.isSelected ? "100" : "0")};
+  z-index: ${(props) => (props.$isSelected ? "100" : "0")};
 `;
 
 const ResetBtn = styled.div`
