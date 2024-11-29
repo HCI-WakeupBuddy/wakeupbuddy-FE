@@ -16,7 +16,7 @@ const SettingTime = () => {
 
   const handleTime = () => {
     setIsChange(false);
-    localStorage.setItem("sutdyTime", studyTime);
+    localStorage.setItem("studyTime", studyTime);
     setErrorMessage(""); // 성공 시 에러 메시지 제거
   };
 

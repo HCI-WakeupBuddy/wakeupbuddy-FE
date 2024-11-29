@@ -9,13 +9,14 @@ import { useNavigate } from "react-router-dom";
 const StartSetting = () => {
   const username = localStorage.getItem("username");
   const vibration = localStorage.getItem("vibrationLevel");
-  const studyTime = localStorage.getItem("sutdyTime");
+  const studyTime = localStorage.getItem("studyTime");
   const navigate = useNavigate();
 
   const handleStudyStart = () => {
     navigate("/detecting");
-    alert(`학습 시간: ${studyTime}분 | 진동 세기: ${vibration}
-🔥 학습과 졸음 탐지 뇌파 측정이 시작됩니다`);
+    alert(`🕖 학습 시간: ${studyTime}분 | 💤 진동 세기: ${vibration}
+
+${username}님의 학습과 함께 졸음 감지 뇌파 측정이 시작됩니다 🔥 `);
   };
 
   return (
@@ -35,7 +36,7 @@ const StartSetting = () => {
           <Button
             txt={"학습 시작"}
             onBtnClick={handleStudyStart}
-            backgroundColor={"#E9E9EB"}
+            $backgroundColor={"#E9E9EB"}
           />
         </ButtonContainer>
       </Wrapper>

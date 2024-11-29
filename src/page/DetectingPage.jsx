@@ -9,8 +9,6 @@ import Button from "../components/common/Button";
 const DetectingPage = () => {
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
-  localStorage.setItem("studyTime", 1);
-
   const initialMinutes = parseInt(localStorage.getItem("studyTime"), 10) || 0;
 
   const [minutes, setMinutes] = useState(initialMinutes);
@@ -53,8 +51,9 @@ const DetectingPage = () => {
         </GraphBox>
         <TimerBox>
           <TimeDisplay>
-            <span>{String(minutes).padStart(2, "0")}</span> :{" "}
-            <span>{String(seconds).padStart(2, "0")}</span>
+            <TimeText>{String(minutes).padStart(2, "0")}</TimeText>{" "}
+            <TimeColon> : </TimeColon>
+            <TimeText>{String(seconds).padStart(2, "0")}</TimeText>
           </TimeDisplay>
           <TimeLabel>
             <span>min</span> <span>sec</span>
@@ -81,7 +80,7 @@ const SubText = styled.div`
   margin-top: 120px;
   color: #000;
   text-align: center;
-  font-family: Pretendard;
+  font-family: "Pretendard";
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -102,16 +101,44 @@ const TimerBox = styled.div`
 `;
 
 const TimeDisplay = styled.div`
+  position: relative;
+  display: flex;
   font-family: "Pretendard";
+  font-style: normal;
+  flex-shrink: 0;
+  color: #1d1b20;
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+`;
+
+const TimeColon = styled.span`
+  position: absolute;
+  top: -5px;
+  left: 87px;
+  height: 72px;
+  font-size: 57px;
+  font-weight: 300;
+  line-height: 64px;
+`;
+
+const TimeText = styled.span`
+  margin: 0 12px;
+  display: inline-block;
+  width: 70px;
+  height: 60px;
+  line-height: 60px; // 텍스트를 세로 중앙 정렬
+  padding: 0;
+  color: #4f378b;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
-  > span {
-    padding: 9px 18px;
-    color: #4f378b;
-    background-color: #e6e0e9;
-    border-radius: 8px;
-  }
+  background-color: #e6e0e9;
+  border-radius: 8px;
+  text-align: center; // 텍스트 중앙 정렬
+  overflow: hidden; // 텍스트 넘침 방지
+  text-overflow: ellipsis; // 텍스트가 넘칠 경우 줄임표 처리
+  white-space: nowrap; // 텍스트를 한 줄로 유지
 `;
 
 const TimeLabel = styled.div`
