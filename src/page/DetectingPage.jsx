@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TitleText from "../components/common/TitleText";
 import styled from "styled-components";
 import Lottie from "lottie-react";
-import Graph from "../animations/graph.json";
+import Graph from "../assets/animations/graph.json";
 import Button from "../components/common/Button";
 
 const DetectingPage = () => {
@@ -39,7 +39,7 @@ const DetectingPage = () => {
   return (
     <div>
       <Wrapper>
-        <TitleText txt={"측정 중"} />
+        <TitleText txt={"학습 중"} />
         <SubText>
           <span>{username}님</span>의 뇌파를 측정 중입니다.
         </SubText>
