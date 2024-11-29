@@ -13,9 +13,13 @@ const SettingTime = () => {
   };
 
   const handleTimeChange = (e) => {
-    setDuration(e.target.value);
-    setIsChange(true); // 값 변경 시 isChange를 true로 설정
-    const value = parseInt(e.target.value, 10);
+    const inputValue = e.target.value;
+    if (isNaN(inputValue)) {
+      return;
+    }
+    const value = parseInt(inputValue, 10);
+    setDuration(value);
+    setIsChange(true);
     localStorage.setItem("duration", value);
   };
 
@@ -37,6 +41,7 @@ const SettingTime = () => {
         />
         <MinText>min</MinText>
       </Content>
+      <ErrorMessage>* 숫자만 입력해주세요.</ErrorMessage>
     </Box>
   );
 };
@@ -116,4 +121,16 @@ const ResetBtn = styled.div`
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+`;
+
+const ErrorMessage = styled.div`
+  text-align: left;
+  margin: 0;
+  margin-top: 7px;
+  margin-left: 65px;
+  color: #e15cd8;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 18px */
 `;
