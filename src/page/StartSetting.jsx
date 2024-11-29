@@ -47,7 +47,7 @@ export default StartSetting;
 
 const Wrapper = styled.div`
   padding: 102px 38px 196px 38px;
-  /* background-color: #ebebeb; */
+  background-color: #fff;
   height: calc(100vh - 298px);
   display: flex;
   flex-direction: column;

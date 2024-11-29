@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/img/logo.svg";
 import TitleText from "../components/common/TitleText";
@@ -6,6 +7,7 @@ import Button from "../components/common/Button";
 
 const MainPage = () => {
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setUsername(e.target.value);
@@ -13,6 +15,7 @@ const MainPage = () => {
   const handleUsername = () => {
     localStorage.clear();
     localStorage.setItem("username", username);
+    navigate("/wearing");
   };
   return (
     <div>
@@ -43,7 +46,8 @@ export default MainPage;
 
 const MainWrapper = styled.div`
   padding: 102px 38px 196px 38px;
-  /* background-color: #ebebeb; */
+  height: calc(100vh - 298px);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
