@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
@@ -9,16 +9,22 @@ import apiCall from "../api/Api";
 
 const WearingPage = () => {
   const [museStatus, setMuseStatus] = useState(false);
-  const [wearingMessage, setWeringMessage] = useState(
+  const [wearingMessage, setWearingMessage] = useState(
     "WakeupBuddy를 착용해주세요."
   );
   const navigate = useNavigate();
-
   const username = localStorage.getItem("username");
+  const isNavigating = useRef(false); // 중복 navigate 방지
+
   let time = 1;
 
   useEffect(() => {
     const intervalId = setInterval(async () => {
+      if (isNavigating.current) {
+        clearInterval(intervalId); // navigate 중이면 interval 중지
+        return;
+      }
+
       try {
         const requestBody = { username };
         const response = await apiCall(
@@ -29,15 +35,18 @@ const WearingPage = () => {
         console.log(response.data.status);
         setMuseStatus(response.data.status);
 
-        // 착용 상태가 true면 3초 후 이동
         if (response.data.status === true) {
+          clearInterval(intervalId); // interval 중지
+          isNavigating.current = true; // navigate 상태 설정
           setTimeout(() => {
             navigate("/setting");
-          }, 3000); // 3초 대기
+          }, 3000); // 3초 대기 후 페이지 이동
         } else {
-          time = time + 1;
+          time += 1;
           if (time > 5) {
-            setWeringMessage("WakeupBuddy를 올바르게 착용했는지 확인해주세요.");
+            setWearingMessage(
+              "WakeupBuddy를 올바르게 착용했는지 확인해주세요."
+            );
           }
         }
       } catch (error) {
@@ -46,7 +55,7 @@ const WearingPage = () => {
     }, 2000); // 2초마다 요청
 
     return () => {
-      clearInterval(intervalId); // 컴포넌트 언마운트 시 정리
+      clearInterval(intervalId); // 컴포넌트 언마운트 시 interval 정리
     };
   }, [username, navigate]);
 

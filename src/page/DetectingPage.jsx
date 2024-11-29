@@ -9,7 +9,7 @@ import Button from "../components/common/Button";
 const DetectingPage = () => {
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
-  const initialMinutes = parseInt(localStorage.getItem("studyTime"), 10) || 0;
+  const initialMinutes = parseInt(localStorage.getItem("duration"), 10) || 0;
   // localStorage.setItem("initialMinutes", 70);
   // const initialMinutes = localStorage.getItem("initialMinutes");
 
@@ -61,7 +61,7 @@ const DetectingPage = () => {
             <span>min</span> <span>sec</span>
           </TimeLabel>
         </TimerBox>
-        <Button $backgroundColor={"#E9E9EB"} txt={"학습 종료"} />
+        {/* <Button $backgroundColor={"#E9E9EB"} txt={"학습 종료"} /> */}
       </Wrapper>
     </div>
   );
