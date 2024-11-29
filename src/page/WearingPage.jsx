@@ -13,22 +13,50 @@ const WearingPage = () => {
 
   const navigate = useNavigate();
 
+  // const handleUsername = async () => {
+  //   try {
+  //     const requestBody = { username };
+  //     const response = await apiCall(
+  //       "/api/muse/muse-status",
+  //       "POST",
+  //       requestBody
+  //     );
+  //     console.log(response);
+  //     localStorage.clear();
+  //     localStorage.setItem("username", username);
+  //     navigate("/wearing");
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
+
   useEffect(() => {
-    const fetchMuseStatus = async () => {
+    const intervalId = setInterval(async () => {
       try {
-        const response = await apiCall("/api/muse/muse-status", "GET");
+        const requestBody = { username };
+        const response = await apiCall(
+          "/api/muse/muse-status",
+          "POST",
+          requestBody
+        );
+        console.log(response.data.status);
         setMuseStatus(response.data.status);
 
-        if (museStatus === true) {
-          navigate("/setting");
+        // 착용 상태가 true면 3초 후 이동
+        if (response.data.status === true) {
+          setTimeout(() => {
+            navigate("/setting");
+          }, 3000); // 3초 대기
         }
       } catch (error) {
         console.error("error", error);
       }
-    };
+    }, 2000); // 2초마다 요청
 
-    fetchMuseStatus();
-  }, [navigate]);
+    return () => {
+      clearInterval(intervalId); // 컴포넌트 언마운트 시 정리
+    };
+  }, [username, navigate]);
 
   return (
     <div>
