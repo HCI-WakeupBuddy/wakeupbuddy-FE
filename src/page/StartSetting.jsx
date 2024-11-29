@@ -1,12 +1,43 @@
 import React from "react";
 import styled from "styled-components";
 import TitleText from "../components/common/TitleText";
+import Button from "../components/common/Button";
+import SettingTime from "../components/common/SettingTime";
+import SettingVibration from "../components/common/SettingVibration";
+import { useNavigate } from "react-router-dom";
 
 const StartSetting = () => {
+  const username = localStorage.getItem("username");
+  const vibration = localStorage.getItem("vibrationLevel");
+  const studyTime = localStorage.getItem("sutdyTime");
+  const navigate = useNavigate();
+
+  const handleStudyStart = () => {
+    navigate("/detecting");
+    alert(`학습 시간: ${studyTime}분 | 진동 세기: ${vibration}
+🔥 학습과 졸음 탐지 뇌파 측정이 시작됩니다`);
+  };
+
   return (
     <div>
       <Wrapper>
-        <TitleText txt={"ooo님,"} />
+        <TextContianer>
+          <TitleText txt={`${username}님,`} />
+          <SubText>학습 시간과 진동세기를 설정해 주세요.</SubText>
+        </TextContianer>
+        <TimeBox>
+          <SettingTime />
+        </TimeBox>
+        <VibrationBox>
+          <SettingVibration />
+        </VibrationBox>
+        <ButtonContainer>
+          <Button
+            txt={"학습 시작"}
+            onBtnClick={handleStudyStart}
+            backgroundColor={"#E9E9EB"}
+          />
+        </ButtonContainer>
       </Wrapper>
     </div>
   );
@@ -16,9 +47,33 @@ export default StartSetting;
 
 const Wrapper = styled.div`
   padding: 102px 38px 196px 38px;
+  background-color: #fff;
   height: calc(100vh - 298px);
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const TextContianer = styled.div`
+  /* margin-top: -60px; */
+`;
+const SubText = styled.div`
+  margin-top: 14px;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+`;
+
+const TimeBox = styled.div`
+  margin: 36px;
+`;
+const VibrationBox = styled.div``;
+
+const ButtonContainer = styled.div`
+  margin-top: 35px;
+  /* padding-bottom: 30px; */
 `;
