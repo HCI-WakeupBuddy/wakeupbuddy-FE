@@ -8,14 +8,12 @@ const SettingVibration = () => {
     let levelId = e ? e.target.id : "";
     setVibrationLevel(levelId);
     localStorage.setItem("vibrationLevel", levelId);
-    console.log(levelId);
   };
 
   const handleCancel = (e) => {
     let levelId = "level1";
     setVibrationLevel(levelId);
     localStorage.setItem("vibrationLevel", levelId);
-    console.log(levelId);
   };
 
   return (
