@@ -16,7 +16,7 @@ const ResultPage = () => {
   useEffect(() => {
     const fetchResult = async () => {
       try {
-        const response = await apiCall("/api/eeg/session-result", "GET");
+        const response = await apiCall("/api/eeg/session-result", "POST");
         setResultInfo(response.data);
       } catch (error) {
         console.log("error", error);

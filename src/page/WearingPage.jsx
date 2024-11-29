@@ -17,7 +17,7 @@ const WearingPage = () => {
     const fetchMuseStatus = async () => {
       try {
         const response = await apiCall("/api/muse/muse-status", "GET");
-        setMuseStatus(response.data.state);
+        setMuseStatus(response.data.status);
 
         if (museStatus === true) {
           navigate("/setting");

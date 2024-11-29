@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Logo from "../assets/img/logo.svg";
 import TitleText from "../components/common/TitleText";
 import Button from "../components/common/Button";
+import apiCall from "../api/Api";
 
 const MainPage = () => {
   const [username, setUsername] = useState("");
@@ -12,10 +13,21 @@ const MainPage = () => {
   const onChange = (e) => {
     setUsername(e.target.value);
   };
-  const handleUsername = () => {
-    localStorage.clear();
-    localStorage.setItem("username", username);
-    navigate("/wearing");
+  const handleUsername = async () => {
+    try {
+      const requestBody = { username };
+      const response = await apiCall(
+        "/api/muse/muse-status",
+        "POST",
+        requestBody
+      );
+      console.log(response);
+      localStorage.clear();
+      localStorage.setItem("username", username);
+      navigate("/wearing");
+    } catch (error) {
+      console.log("error", error);
+    }
   };
   return (
     <div>
