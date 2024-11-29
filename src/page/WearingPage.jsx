@@ -5,7 +5,6 @@ import { BeatLoader } from "react-spinners";
 import TitleText from "../components/common/TitleText";
 import Lottie from "lottie-react";
 import Check from "../assets/animations/checkmark.json";
-import axios from "axios";
 import apiCall from "../api/Api";
 
 const WearingPage = () => {

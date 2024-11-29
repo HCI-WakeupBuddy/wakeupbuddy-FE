@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TitleText from "../components/common/TitleText";
 import ResultBox from "../components/result/ResultBox";
-import SampleImg from "../assets/img/sample-graph.png";
+// import SampleImg from "../assets/img/sample-graph.png";
 import apiCall from "../api/Api";
 
 // const MOCKRESULT = [
