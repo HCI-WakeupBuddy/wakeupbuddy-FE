@@ -1,5 +1,5 @@
 # HCI-WakeupBuddy 
-Backend Repository
+Frontend Repository
 
 <br/>
 
